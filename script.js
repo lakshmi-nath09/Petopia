@@ -1,27 +1,23 @@
-const tips = [
-    "Fresh water is a must!",
-    "Playtime reduces stress.",
-    "Check paws after walks.",
-    "Healthy food = Happy pet."
-];
-
 function createHub() {
     const name = document.getElementById('petName').value;
     const type = document.getElementById('petType').value;
 
     if(name && type) {
+        // Update the display text
         document.getElementById('resName').innerText = name;
         document.getElementById('resType').innerText = type;
         
-        const randomTip = tips[Math.floor(Math.random() * tips.length)];
-        document.getElementById('dailyTip').innerText = randomTip;
-
+        // Show the passport card
         document.getElementById('passport').style.display = 'block';
+        
+        // Clear the mood status for a fresh start
+        document.getElementById('moodStatus').innerText = "";
     } else {
-        alert("Arey, please fill the details!");
+        alert("Arey! Please fill out the Pet Name and Breed first.");
     }
 }
 
 function logMood(mood) {
-    document.getElementById('moodStatus').innerText = "Status: " + mood;
+    const name = document.getElementById('petName').value || "Your pet";
+    document.getElementById('moodStatus').innerText = `${name} is feeling ${mood} today!`;
 }
