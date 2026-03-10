@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petopia Hub | Smart Care</title>
+    <title>Petopia Hub | Book Paradise</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,47 +11,33 @@
     <div class="hub-container">
         <header>
             <h1>Petopia Hub</h1>
-            <p>Your Pet’s Digital Universe</p>
+            <p>Where Pets Find Paradise</p>
         </header>
 
         <div class="form-group">
             <label>Pet Name</label>
             <input type="text" id="petName" placeholder="tomy">
         </div>
-
-        <div class="form-group">
-            <label>Pet Breed/Type</label>
-            <input type="text" id="petType" placeholder="german sheperd">
-        </div>
-
-        <div class="form-group">
-            <label>Last Vet Visit</label>
-            <input type="date" id="vetDate">
-        </div>
-
         <button class="btn-main" onclick="createHub()">Launch Hub</button>
 
         <div id="passport">
             <span class="status">● Active</span>
-            <h2 id="resName" style="margin:0;">Name</h2>
-            <p id="resType" style="margin: 15px 0; color: #636e72;">Type</p>
+            <h2 id="resName">Name</h2>
+            <div class="tip-box" id="dailyTip">Tip: Regular checkups keep Tomy happy!</div>
 
-            <div class="tip-box" id="dailyTip">
-                <strong>Petopia Tip:</strong> Check for ticks after every outdoor walk.
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+
+            <h3>📅 Book an Appointment</h3>
+            <div class="service-list">
+                <div class="service-item">
+                    <span><strong>Paradise Vet Clinic</strong> (Open)</span>
+                    <button class="book-btn" onclick="bookAppointment('Paradise Vet')">Book Now</button>
+                </div>
+                <div class="service-item">
+                    <span><strong>Bubbles Grooming</strong> (Open)</span>
+                    <button class="book-btn" onclick="bookAppointment('Bubbles Grooming')">Book Now</button>
+                </div>
             </div>
-
-            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-            
-            <label>Today's Mood Log:</label>
-            <div class="mood-selector">
-                <button class="mood-btn" onclick="logMood('Happy')">😊</button>
-                <button class="mood-btn" onclick="logMood('Sleepy')">😴</button>
-                <button class="mood-btn" onclick="logMood('Energetic')">⚡</button>
-                <button class="mood-btn" onclick="logMood('Hungry')">🍖</button>
-            </div>
-            <p id="moodStatus"></p>
-
-            <button class="print-btn" onclick="window.print()">Print Care Summary</button>
         </div>
     </div>
 
