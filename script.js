@@ -1,23 +1,22 @@
 function createHub() {
     const name = document.getElementById('petName').value;
-    const type = document.getElementById('petType').value;
-
-    if(name && type) {
-        // Update the display text
+    if(name) {
         document.getElementById('resName').innerText = name;
-        document.getElementById('resType').innerText = type;
-        
-        // Show the passport card
         document.getElementById('passport').style.display = 'block';
-        
-        // Clear the mood status for a fresh start
-        document.getElementById('moodStatus').innerText = "";
     } else {
-        alert("Arey! Please fill out the Pet Name and Breed first.");
+        alert("Arey! Enter pet name first.");
     }
 }
 
-function logMood(mood) {
-    const name = document.getElementById('petName').value || "Your pet";
-    document.getElementById('moodStatus').innerText = `${name} is feeling ${mood} today!`;
+function bookAppointment(serviceName) {
+    const petName = document.getElementById('petName').value || "My Pet";
+    
+    // This creates a custom message
+    const message = `Hello ${serviceName}, I would like to book an appointment for my pet, ${petName}!`;
+    
+    // This opens the user's email app with the message ready!
+    // In a real app, this would go to a database.
+    window.location.href = `mailto:care@petopiahub.com?subject=Booking for ${petName}&body=${message}`;
+    
+    alert(`Arey! Opening your mail to book with ${serviceName}.`);
 }
