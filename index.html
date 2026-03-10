@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petopia Hub | Smart Care</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+    <div class="hub-container">
+        <header class="no-print">
+            <h1>Petopia Hub</h1>
+            <p>Your Pet’s Digital Universe</p>
+        </header>
+
+        <div class="no-print">
+            <div class="form-group">
+                <label>Pet Name</label>
+                <input type="text" id="petName" placeholder="e.g. Simba">
+            </div>
+            <div class="form-group">
+                <label>Pet Type</label>
+                <input type="text" id="petType" placeholder="e.g. Cat">
+            </div>
+            <button class="btn-main" onclick="createHub()">Launch Hub</button>
+        </div>
+
+        <div id="passport">
+            <h2 id="resName">Name</h2>
+            <p id="resType">Type</p>
+            <div class="tip-box" id="dailyTip"></div>
+            <div class="mood-selector no-print">
+                <button onclick="logMood('Happy')">😊</button>
+                <button onclick="logMood('Sleepy')">😴</button>
+                <button onclick="logMood('Hungry')">🍖</button>
+            </div>
+            <p id="moodStatus"></p>
+        </div>
+    </div>
+    <script src="script.js"></script> </body>
+</html>
