@@ -4,37 +4,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Petopia Hub | Smart Care</title>
-    <link rel="stylesheet" href="style.css"> </head>
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #00b894;
+            --bg: #f9f9fb;
+            --card: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hub-container {
+            background: var(--card);
+            max-width: 450px;
+            width: 100%;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        header { text-align: center; margin-bottom: 25px; }
+        header h1 { color: var(--primary); margin: 0; font-size: 2.2rem; }
+        header p { color: #636e72; font-size: 0.9rem; }
+
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: 600; color: #000; }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .btn-main {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #passport {
+            margin-top: 30px;
+            display: none;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #f1f2f6;
+            border-radius: 20px;
+            border-left: 8px solid var(--primary);
+            position: relative;
+        }
+
+        .status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .tip-box {
+            background: #e8f0fe;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #333;
+        }
+
+        .mood-selector {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+        }
+
+        .mood-btn {
+            background: #f1f2f6;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            width: 45px;
+            height: 45px;
+        }
+
+        .print-btn {
+            margin-top: 15px;
+            background: #f1f1f1;
+            border: 1px solid #ccc;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
 <body>
+
     <div class="hub-container">
-        <header class="no-print">
+        <header>
             <h1>Petopia Hub</h1>
             <p>Your Pet’s Digital Universe</p>
         </header>
 
-        <div class="no-print">
-            <div class="form-group">
-                <label>Pet Name</label>
-                <input type="text" id="petName" placeholder="e.g. Simba">
-            </div>
-            <div class="form-group">
-                <label>Pet Type</label>
-                <input type="text" id="petType" placeholder="e.g. Cat">
-            </div>
-            <button class="btn-main" onclick="createHub()">Launch Hub</button>
+        <div class="form-group">
+            <label>Pet Name</label>
+            <input type="text" id="petName" placeholder="tomy">
         </div>
 
+        <div class="form-group">
+            <label>Pet Breed/Type</label>
+            <input type="text" id="petType" placeholder="german sheperd">
+        </div>
+
+        <div class="form-group">
+            <label>Last Vet Visit</label>
+            <input type="date" id="vetDate">
+        </div>
+
+        <button class="btn-main" onclick="createHub()">Launch Hub</button>
+
         <div id="passport">
-            <h2 id="resName">Name</h2>
-            <p id="resType">Type</p>
-            <div class="tip-box" id="dailyTip"></div>
-            <div class="mood-selector no-print">
-                <button onclick="logMood('Happy')">😊</button>
-                <button onclick="logMood('Sleepy')">😴</button>
-                <button onclick="logMood('Hungry')">🍖</button>
+            <span class="status">● Active</span>
+            <h2 id="resName" style="margin:0;">Name</h2>
+            <p id="resType" style="margin: 15px 0; color: #636e72;">Type</p>
+
+            <div class="tip-box" id="dailyTip">
+                <strong>Petopia Tip:</strong> Check for ticks after every outdoor walk.
             </div>
-            <p id="moodStatus"></p>
+
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+            
+            <label>Today's Mood Log:</label>
+            <div class="mood-selector">
+                <button class="mood-btn" onclick="logMood('Happy')">😊</button>
+                <button class="mood-btn" onclick="logMood('Sleepy')">😴</button>
+                <button class="mood-btn" onclick="logMood('Energetic')">⚡</button>
+                <button class="mood-btn" onclick="logMood('Hungry')">🍖</button>
+            </div>
+            <p id="moodStatus" style="font-size: 0.95rem; margin-top: 10px;"></p>
+
+            <button class="print-btn" onclick="window.print()">Print Care Summary</button>
         </div>
     </div>
-    <script src="script.js"></script> </body>
+
+    <script>
+        function createHub() {
+            const name = document.getElementById('petName').value;
+            const type = document.getElementById('petType').value;
+
+            if(name && type) {
+                document.getElementById('resName').innerText = name;
+                document.getElementById('resType').innerText = type;
+                document.getElementById('passport').style.display = 'block';
+            } else {
+                alert("Please fill out the details!");
+            }
+        }
+
+        function logMood(mood) {
+            const name = document.getElementById('petName').value || "Your pet";
+            document.getElementById('moodStatus').innerText = `${name} is feeling ${mood} today!`;
+        }
+    </script>
+</body>
 </html>
