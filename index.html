@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petopia Hub | Book Paradise</title>
+    <title>Petopia Hub | Smart Care</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,32 +11,36 @@
     <div class="hub-container">
         <header>
             <h1>Petopia Hub</h1>
-            <p>Where Pets Find Paradise</p>
+            <p>Your Pet’s Digital Universe</p>
         </header>
 
         <div class="form-group">
             <label>Pet Name</label>
             <input type="text" id="petName" placeholder="tomy">
         </div>
+
         <button class="btn-main" onclick="createHub()">Launch Hub</button>
 
         <div id="passport">
             <span class="status">● Active</span>
-            <h2 id="resName">Name</h2>
-            <div class="tip-box" id="dailyTip">Tip: Regular checkups keep Tomy happy!</div>
-
-            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
-
-            <h3>📅 Book an Appointment</h3>
-            <div class="service-list">
-                <div class="service-item">
-                    <span><strong>Paradise Vet Clinic</strong> (Open)</span>
-                    <button class="book-btn" onclick="bookAppointment('Paradise Vet')">Book Now</button>
+            <h2 id="resName" style="margin:0;">Name</h2>
+            
+            <div id="booking-section">
+                <h3>📅 Schedule Appointment</h3>
+                <div class="form-group">
+                    <label>Select Date</label>
+                    <input type="date" id="bookDate">
                 </div>
-                <div class="service-item">
-                    <span><strong>Bubbles Grooming</strong> (Open)</span>
-                    <button class="book-btn" onclick="bookAppointment('Bubbles Grooming')">Book Now</button>
+                <div class="form-group">
+                    <label>Select Time</label>
+                    <select id="bookTime">
+                        <option>09:00 AM</option>
+                        <option>11:00 AM</option>
+                        <option>02:00 PM</option>
+                        <option>04:00 PM</option>
+                    </select>
                 </div>
+                <button class="book-btn" onclick="bookAppointment('Paradise Vet')">Book with Paradise Vet</button>
             </div>
         </div>
     </div>
