@@ -1,0 +1,19 @@
+body {
+    font-family: sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+.hub-container {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 350px;
+}
+h1 { color: #6c5ce7; text-align: center; }
+input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;}
+.btn-main { width: 100%; background: #6c5ce7; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; }
+#passport { margin-top: 20px; display: none; border-top: 5px solid #6c5ce7; padding-top: 20px; }
+.tip-box { background: #e8f0fe; padding: 10px; border-radius: 8px; font-size: 0.9rem; margin: 10px 0; }
